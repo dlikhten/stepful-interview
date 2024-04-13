@@ -81,9 +81,6 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.3)
-    debase (0.2.5.beta2)
-      debase-ruby_core_source (>= 0.10.12)
-    debase-ruby_core_source (3.2.1)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -243,8 +240,6 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    ruby-debug-ide (0.7.3)
-      rake (>= 0.8.1)
     thor (1.2.2)
     timecop (0.9.6)
     timeout (0.4.0)
@@ -262,7 +257,6 @@ DEPENDENCIES
   annotate
   bootsnap
   database_cleaner
-  debase
   debug
   dotenv-rails
   factory_bot_rails
@@ -278,7 +272,6 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.3)
   responders
   rspec-rails
-  ruby-debug-ide
   timecop
   tzinfo-data
 

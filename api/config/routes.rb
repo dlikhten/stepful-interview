@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     # standard resources (mostly view-only, use forms for submission)
 
     # forms
+    resources :login_forms, only: [:create]
   end
 end

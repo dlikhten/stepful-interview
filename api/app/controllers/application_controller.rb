@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::API
   class UnauthorizedError < StandardError; end
 
@@ -14,8 +12,10 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_user!
-    @current_user = User.find_by(email: request.headers['user-id']) if request.headers['user-id'].present?
+    @current_user = User.find_by(email: request.headers["current-email"]) if request.headers["current-email"].present?
   end
 
-  attr_reader :current_user
+  def current_user
+    @current_user
+  end
 end

@@ -66,7 +66,7 @@
     "ruby.rails.projectView.checked": "true",
     "ruby.structure.view.model.defaults.configured": "true",
     "settings.editor.selected.configurable": "settings.sync",
-    "ts.external.directory.path": "/Users/dlikhten/src/utilizecore-interview/frontend/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Applications/RubyMine.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -569,7 +569,7 @@
       <workItem from="1688659370244" duration="38125000" />
       <workItem from="1688699833599" duration="2082000" />
       <workItem from="1689253741563" duration="9265000" />
-      <workItem from="1713023226140" duration="1659000" />
+      <workItem from="1713023226140" duration="5969000" />
     </task>
     <servers />
   </component>
