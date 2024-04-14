@@ -67,7 +67,7 @@ export default function Student() {
     // when we succeed on creating a reservation, reload all data to get fresh data
     mutateTimeSlots(undefined, { revalidate: true });
     mutateSessions(undefined, { revalidate: true });
-  }, []);
+  }, [mutateSessions, mutateTimeSlots]);
 
   if (!sessions || !filteredTimeSlots || isLoadingTimeSlots || isLoadingSessions) {
     return <Loading />;

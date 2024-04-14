@@ -14,8 +14,10 @@ class ReserveSessionForm < BaseForm
     cts.with_lock do
       if cts.session
         errors.add(:coach_time_slot_id, 'time slot has been taken.')
+        false
       elsif Session.where(student: current_user).overlaps_with(cts.time_slot).exists?
         errors.add(:coach_time_slot_id, 'overlaps with existing session.')
+        false
       else
         records_to_save = []
         records_to_save << cts
@@ -25,6 +27,8 @@ class ReserveSessionForm < BaseForm
           coach: cts.coach,
           student: current_user
         )
+
+        # TODO: if we want to convert to allow overlapping coach timeslots need to close timeslots that overlap with this reservation
 
         save_model(cts, records_to_save)
       end

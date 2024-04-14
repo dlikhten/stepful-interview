@@ -33,4 +33,13 @@ class CoachTimeSlot < ApplicationRecord
 
   scope :order_by_start_time, ->(dir = 'asc') { joins(:time_slot).order("time_slots.start_time #{dir}") }
   scope :active_only, -> { joins(:time_slot).where('time_slots.end_time > ?', Time.current) }
+  scope :overlaps_with, lambda { |time_slot|
+    time_slot_as_param = {
+      start_time: time_slot.start_time,
+      end_time: time_slot.end_time
+    }
+    scope = joins(:time_slot)
+
+    scope.where('time_slots.start_time between :start_time and :end_time', time_slot_as_param).or(scope.where('time_slots.end_time between :start_time and :end_time', time_slot_as_param))
+  }
 end

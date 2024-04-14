@@ -1,19 +1,17 @@
 import { FormatDate } from 'components/FormatDate';
-import { AvailableTimeslot } from 'components/pages/student/AvailableTimeslot';
-import { createSWRKey, useMergeIncludes } from 'concerns/jsonapi_utils';
+import { AddTimeSlotForm } from 'components/pages/coach/AddTimeSlotForm';
+import { createSWRKey } from 'concerns/jsonapi_utils';
 import { CoachTimeSlotRecord } from 'models/CoachTimeSlotRecord';
-import { SessionRecord } from 'models/SessionRecord';
-import { TimeSlotRecord } from 'models/TimeSlotRecord';
 import Link from 'next/link';
 import Loading from 'pages/_loading';
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import useSWR from 'swr';
 
 // TODO: There is no pagination here. This should definitely be laid out and paginated better than anything in this UI
 export default function Coach() {
-  const coachTimeSlotRecordDependencyGraph = "session.student,time_slot"
+  const coachTimeSlotRecordDependencyGraph = 'session.student,time_slot';
 
   const {
     data: timeSlots,
@@ -25,7 +23,7 @@ export default function Coach() {
       per: 1000,
       where: {
         active_only: true,
-        own_only: true
+        own_only: true,
       },
     }),
     async () => {
@@ -33,7 +31,7 @@ export default function Coach() {
         .per(1000)
         .where({
           active_only: true,
-          own_only: true
+          own_only: true,
         })
         .order('start_time') // not an attribute, but the server allows this
         .all();
@@ -42,6 +40,11 @@ export default function Coach() {
   );
 
   const currentEmail = useSelector((state: RootState) => state.login.currentEmail);
+
+  const handleCreateCoachTimeSlotSuccess = useCallback(() => {
+    // when we succeed on creating a reservation, reload all data to get fresh data
+    mutateTimeSlots(undefined, { revalidate: true });
+  }, [mutateTimeSlots]);
 
   if (!timeSlots || isLoadingTimeSlots) {
     return <Loading />;
@@ -55,13 +58,17 @@ export default function Coach() {
           </div>
         </div>
         <div className="w-1/2 flex flex-col m-auto my-4">
+          <h1 className="text-3xl mb-4">Add a time slot</h1>
+          <AddTimeSlotForm onSuccess={handleCreateCoachTimeSlotSuccess} />
+        </div>
+        <div className="w-1/2 flex flex-col m-auto my-4">
           <h1 className="text-3xl mb-4">Schedule</h1>
           {timeSlots.map(timeSlot => (
             <div key={timeSlot.id} className="flex-nowrap flex space-x-1">
               <div>
-                <FormatDate.LongForm date={timeSlot.timeSlot.startTime}/>
+                <FormatDate.LongForm date={timeSlot.timeSlot.startTime} />
                 -
-                <FormatDate.LongForm date={timeSlot.timeSlot.endTime}/>
+                <FormatDate.LongForm date={timeSlot.timeSlot.endTime} />
               </div>
               {timeSlot.session ? (
                 <div>
@@ -71,10 +78,9 @@ export default function Coach() {
                 <div>available</div>
               )}
             </div>
-        ))}
+          ))}
+        </div>
       </div>
-  </div>
-  )
-    ;
+    );
   }
 }
