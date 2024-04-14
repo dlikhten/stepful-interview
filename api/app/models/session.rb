@@ -28,4 +28,6 @@ class Session < ApplicationRecord
   belongs_to :student, class_name: 'User'
 
   validates :start_time, :end_time, presence: true
+
+  scope :active_only, -> { where('end_time > ?', Time.zone.now) }
 end

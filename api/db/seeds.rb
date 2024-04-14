@@ -70,7 +70,19 @@ cts3_2.create_session(
   student: User.find_by(email: 'student3@example.com')
 )
 
+ts_now = TimeSlot.create(start_time: Time.zone.now - 1.hour, end_time: Time.zone.now + 1.hour)
+cts_now = ts_now.coach_time_slots.create(
+  coach: User.find_by(user_type: :coach, email: 'coach1@example.com'),
+)
+cts_now.create_session(
+  start_time: ts_now.start_time,
+  end_time: ts_now.end_time,
+  coach: cts_now.coach,
+  student: User.find_by(email: 'student1@example.com')
+)
+
 # student 1 should only see slot 2
 # student 2 should see slot 1, 2, 3
 # student 3 should see slot 1, 2
+# there is currently a session between coach 1 and student 1 active right now
 # TODO: This should all be unit tested for the resource if time permits

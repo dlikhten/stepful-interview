@@ -22,7 +22,7 @@ export default function Login() {
     (form: LoginFormRecord) => {
       dispatch(setCurrentEmail(form.email));
 
-      // router.push('/destination');
+      router.push('/student');
     },
     [dispatch, router]
   );

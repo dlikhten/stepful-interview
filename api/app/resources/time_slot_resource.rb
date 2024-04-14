@@ -6,7 +6,6 @@ class TimeSlotResource < ApplicationResource
 
   has_many :coach_time_slots
 
-  # TODO: ideally we should also filter the coach_time_slots relationship if available_only is provided, I skipped this just to save some impl time
   filter :available_only, :boolean do
     eq do |scope, value|
       if value

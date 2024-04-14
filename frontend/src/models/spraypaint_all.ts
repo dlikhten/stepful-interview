@@ -1,3 +1,8 @@
+import { CoachTimeSlotRecord } from 'models/CoachTimeSlotRecord';
+import { SessionRecord } from 'models/SessionRecord';
+import { TimeSlotRecord } from 'models/TimeSlotRecord';
+import { UserRecord } from 'models/UserRecord';
+
 /**
  * Don't allow any of this to be transpiled out!
  *
@@ -6,5 +11,5 @@
  * are loaded so relationships can be appropriately read.
  */
 export function spraypaintAll() {
-  return [];
+  return [SessionRecord, UserRecord, CoachTimeSlotRecord, TimeSlotRecord];
 }
