@@ -14,7 +14,8 @@ class ReserveSessionForm < BaseForm
     cts.with_lock do
       if cts.session
         errors.add(:coach_time_slot_id, 'time slot has been taken.')
-        # TODO: ensure no overlaps with existing sessions for current user.
+      elsif Session.where(student: current_user).overlaps_with(cts.time_slot).exists?
+        errors.add(:coach_time_slot_id, 'overlaps with existing session.')
       else
         records_to_save = []
         records_to_save << cts

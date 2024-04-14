@@ -30,4 +30,11 @@ class Session < ApplicationRecord
   validates :start_time, :end_time, presence: true
 
   scope :active_only, -> { where('end_time > ?', Time.zone.now) }
+  scope :overlaps_with, ->(time_slot) {
+    time_slot_as_param = {
+      start_time: time_slot.start_time,
+      end_time: time_slot.end_time,
+    }
+    where('start_time between :start_time and :end_time', time_slot_as_param).or(where('end_time between :start_time and :end_time', time_slot_as_param))
+  }
 end
