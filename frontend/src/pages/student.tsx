@@ -1,9 +1,11 @@
 import { FormatDate } from 'components/FormatDate';
-import { createSWRKey } from 'concerns/jsonapi_utils';
+import { AvailableTimeslot } from 'components/pages/student/AvailableTimeslot';
+import { createSWRKey, useMergeIncludes } from 'concerns/jsonapi_utils';
 import { SessionRecord } from 'models/SessionRecord';
 import { TimeSlotRecord } from 'models/TimeSlotRecord';
+import Link from 'next/link';
 import Loading from 'pages/_loading';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import useSWR from 'swr';
@@ -22,12 +24,12 @@ export default function Student() {
       .where({
         active_only: true,
       })
-      .order("start_time")
+      .order('start_time')
       .all();
     return raw?.data;
   });
 
-  const timeSlotDependencyGraph = { coach_time_slots: ['session'] };
+  const timeSlotDependencyGraph = useMergeIncludes("coach_time_slots.session", AvailableTimeslot.dependencyGraph.timeSlot);
   const {
     data: timeSlots,
     isLoading: isLoadingTimeSlots,
@@ -48,7 +50,7 @@ export default function Student() {
           available_only: true,
           exclude_student_overlap: true,
         })
-        .order("start_time")
+        .order('start_time')
         .all();
       return raw?.data;
     }
@@ -56,10 +58,16 @@ export default function Student() {
 
   // TODO: ideally this should be done on the server, but in the interest of time I went with this simple solution
   const filteredTimeSlots = useMemo(() => {
-    return timeSlots ? timeSlots.filter(timeSlot => timeSlot.coachTimeSlots.length) : timeSlots
-  }, [timeSlots])
+    return timeSlots ? timeSlots.filter(timeSlot => timeSlot.coachTimeSlots.length) : timeSlots;
+  }, [timeSlots]);
 
   const currentEmail = useSelector((state: RootState) => state.login.currentEmail);
+
+  const handleReservationSuccess = useCallback(() => {
+    // when we succeed on creating a reservation, reload all data to get fresh data
+    mutateTimeSlots(undefined, { revalidate: true });
+    mutateSessions(undefined, { revalidate: true });
+  }, []);
 
   if (!sessions || !filteredTimeSlots || isLoadingTimeSlots || isLoadingSessions) {
     return <Loading />;
@@ -68,6 +76,9 @@ export default function Student() {
       <div className="bg-blue-300 w-full h-screen p-4">
         <div className="w-1/2 flex flex-col m-auto">
           <div className="text-sm mb-4">Logged in as: {currentEmail}</div>
+          <div>
+            <Link href="/login">Logout</Link>
+          </div>
         </div>
         <div className="w-1/2 flex flex-col m-auto my-4">
           <h1 className="text-3xl mb-4">Scheduled Sessions</h1>
@@ -78,10 +89,7 @@ export default function Student() {
                 -
                 <FormatDate.LongForm date={session.endTime} />
               </div>
-              <div>
-                with
-
-              </div>
+              <div>with</div>
               <div>
                 {session.coach.name} -- {session.coach.phone}
               </div>
@@ -91,12 +99,7 @@ export default function Student() {
         <div className="w-1/2 flex flex-col m-auto my-4">
           <h1 className="text-3xl mb-4">Available Timeslots</h1>
           {filteredTimeSlots.map(timeSlot => (
-            <div key={timeSlot.id} className="flex-nowrap flex">
-              <FormatDate.LongForm date={timeSlot.startTime} />
-              -
-              <FormatDate.LongForm date={timeSlot.endTime} />
-              <div className="ml-2">{timeSlot.coachTimeSlots.length} available coaches</div>
-            </div>
+            <AvailableTimeslot timeSlot={timeSlot} key={timeSlot.id} onReservationSuccess={handleReservationSuccess} />
           ))}
         </div>
       </div>

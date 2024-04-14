@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
     # forms
     resources :login_forms, only: [:create]
+    resources :reserve_session_forms, only: [:create]
   end
 end
