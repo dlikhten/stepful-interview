@@ -6,7 +6,7 @@ export type ReserveSessionFormAttributes = {
 };
 
 @Model()
-export class ReserveSessionForm extends ApplicationRecord implements ReserveSessionFormAttributes {
+export class ReserveSessionFormRecord extends ApplicationRecord implements ReserveSessionFormAttributes {
   static jsonapiType = 'reserve_session_form';
   static endpoint = '/reserve_session_forms';
 

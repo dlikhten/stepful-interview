@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fe4f4a6-63e1-4e5c-af1d-fd9080db732b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/ViewSession.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/app/controllers/post_session_notes_forms_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/app/forms/post_session_notes_form.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/app/resources/post_session_notes_form_resource.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/coach/AnnotateSessionForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/coach/CoachViewSession.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/models/forms/PostSessionNotesFormRecord.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/forms/create_coach_time_slot_form.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/forms/create_coach_time_slot_form.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/models/session.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/models/session.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/resources/session_resource.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/resources/session_resource.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/spec/factories/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/spec/factories/users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/ViewSession.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/student/ViewSession.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/pages/student/ReserveSlotForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/pages/student/ReserveSlotForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/forms/ReserveSessionForm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/forms/ReserveSessionFormRecord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/coach.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/coach.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/coach_history.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/coach_history.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/student.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/student.tsx" afterDir="false" />
     </list>
@@ -65,7 +71,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/dlikhten/src/stepful-interview/api/app/resources",
+    "last_opened_file_path": "/Users/dlikhten/src/stepful-interview/api/app/forms",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,18 +101,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/app/forms" />
+      <recent name="$PROJECT_DIR$/frontend/src/models/forms" />
       <recent name="$PROJECT_DIR$/api/app/resources" />
       <recent name="$PROJECT_DIR$/api/app/controllers" />
-      <recent name="$PROJECT_DIR$/frontend/src/models/forms" />
       <recent name="$PROJECT_DIR$/frontend/src/models" />
-      <recent name="$PROJECT_DIR$/api/app/forms" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/pages/student" />
       <recent name="$PROJECT_DIR$/frontend/src/components/pages/coach" />
       <recent name="$PROJECT_DIR$/frontend/src/concerns" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/api/app/forms" />
-      <recent name="$PROJECT_DIR$/frontend/src/pages/client/recovery-team" />
     </key>
   </component>
   <component name="RubyModuleManagerSettings">
@@ -601,7 +607,7 @@
       <workItem from="1713052673750" duration="611000" />
       <workItem from="1713053485338" duration="700000" />
       <workItem from="1713054535428" duration="651000" />
-      <workItem from="1713056752349" duration="18597000" />
+      <workItem from="1713056752349" duration="21096000" />
     </task>
     <servers />
   </component>

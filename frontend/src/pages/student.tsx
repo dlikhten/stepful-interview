@@ -1,6 +1,6 @@
 import { FormatDate } from 'components/FormatDate';
 import { AvailableTimeslot } from 'components/pages/student/AvailableTimeslot';
-import { ViewSession } from 'components/pages/ViewSession';
+import { ViewSession } from 'components/pages/student/ViewSession';
 import { createSWRKey, useMergeIncludes } from 'concerns/jsonapi_utils';
 import { SessionRecord } from 'models/SessionRecord';
 import { TimeSlotRecord } from 'models/TimeSlotRecord';

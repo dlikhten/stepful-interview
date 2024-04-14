@@ -72,7 +72,7 @@ export default function Coach() {
               </div>
               {timeSlot.session ? (
                 <div>
-                  with {timeSlot.session.student.name} -- {timeSlot.session.student.phone}
+                  with {timeSlot.session.student.name} -- Phone #: {timeSlot.session.student.phone}
                 </div>
               ) : (
                 <div>available</div>

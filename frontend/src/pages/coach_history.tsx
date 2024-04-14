@@ -1,9 +1,12 @@
 import { FormatDate } from 'components/FormatDate';
-import { ViewSession } from 'components/pages/ViewSession';
+import { AnnotateSessionForm } from 'components/pages/coach/AnnotateSessionForm';
+import { CoachViewSession } from 'components/pages/coach/CoachViewSession';
+import { ViewSession } from 'components/pages/student/ViewSession';
 import { createSWRKey } from 'concerns/jsonapi_utils';
 import { SessionRecord } from 'models/SessionRecord';
 import Link from 'next/link';
 import Loading from 'pages/_loading';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store/store';
 import useSWR from 'swr';
@@ -29,6 +32,11 @@ export default function CoachHistory() {
 
   const currentEmail = useSelector((state: RootState) => state.login.currentEmail);
 
+  const handleSessionFeedbackSuccess = useCallback(() => {
+    // when we succeed on creating a reservation, reload all data to get fresh data
+    mutateSessions(undefined, { revalidate: true });
+  }, [mutateSessions]);
+
   if (!sessions || isLoadingSessions) {
     return <Loading />;
   } else {
@@ -43,8 +51,10 @@ export default function CoachHistory() {
         <div className="w-1/2 flex flex-col m-auto my-4">
           <h1 className="text-3xl mb-4">Historical Sessions</h1>
           {sessions.map(session => (
-            <div>
-              <ViewSession key={session.id} session={session} otherSide={session.student} />
+            <div key={session.id}>
+              <CoachViewSession session={session} />
+              {/* note: i put in an edit form here, but frankly its not great ux, mainly because i'd want something that shows/hides this form */}
+              <AnnotateSessionForm session={session} onSuccess={handleSessionFeedbackSuccess} />
             </div>
           ))}
         </div>

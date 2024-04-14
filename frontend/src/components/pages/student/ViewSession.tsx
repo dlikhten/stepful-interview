@@ -16,7 +16,7 @@ export function ViewSession({ session, otherSide }: Props) {
     </div>
     <div>with</div>
     <div>
-      {otherSide.name} -- {otherSide.phone}
+      {otherSide.name} -- Phone #: {otherSide.phone}
     </div>
   </div>
 }

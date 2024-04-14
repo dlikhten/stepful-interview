@@ -5,7 +5,7 @@ import { SubmitButtonField } from 'components/forms/SubmitButtonField';
 import { useSubmit } from 'concerns/form-behaviors';
 import { Form, Formik } from 'formik';
 import { first } from 'lodash-es';
-import { ReserveSessionForm, ReserveSessionFormAttributes } from 'models/forms/ReserveSessionForm';
+import { ReserveSessionFormRecord, ReserveSessionFormAttributes } from 'models/forms/ReserveSessionFormRecord';
 import { TimeSlotRecord } from 'models/TimeSlotRecord';
 import { useMemo } from 'react';
 
@@ -21,9 +21,9 @@ export function ReserveSlotForm({ timeSlot, onSuccess }: Props) {
     }
   }, [timeSlot])
 
-  const onSubmit = useSubmit<ReserveSessionFormAttributes, ReserveSessionForm>({
+  const onSubmit = useSubmit<ReserveSessionFormAttributes, ReserveSessionFormRecord>({
     onSuccess,
-    recordClass: ReserveSessionForm
+    recordClass: ReserveSessionFormRecord
   })
 
   const coachOptions: SelectOption[] = useMemo<SelectOption[]>(() =>
