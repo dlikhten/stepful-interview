@@ -29,7 +29,9 @@ class Session < ApplicationRecord
 
   validates :start_time, :end_time, presence: true
 
+  # note, anything that is currently ongoing is considered both active and historical, as it is convenient at the moment
   scope :active_only, -> { where('end_time > ?', Time.current) }
+  scope :historical_only, -> { where('start_time < ?', Time.current) }
   scope :overlaps_with, ->(time_slot) {
     time_slot_as_param = {
       start_time: time_slot.start_time,

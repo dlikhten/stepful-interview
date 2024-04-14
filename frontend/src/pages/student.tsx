@@ -1,5 +1,6 @@
 import { FormatDate } from 'components/FormatDate';
 import { AvailableTimeslot } from 'components/pages/student/AvailableTimeslot';
+import { ViewSession } from 'components/pages/ViewSession';
 import { createSWRKey, useMergeIncludes } from 'concerns/jsonapi_utils';
 import { SessionRecord } from 'models/SessionRecord';
 import { TimeSlotRecord } from 'models/TimeSlotRecord';
@@ -83,17 +84,7 @@ export default function Student() {
         <div className="w-1/2 flex flex-col m-auto my-4">
           <h1 className="text-3xl mb-4">Scheduled Sessions</h1>
           {sessions.map(session => (
-            <div key={session.id} className="flex-nowrap flex space-x-1">
-              <div>
-                <FormatDate.LongForm date={session.startTime} />
-                -
-                <FormatDate.LongForm date={session.endTime} />
-              </div>
-              <div>with</div>
-              <div>
-                {session.coach.name} -- {session.coach.phone}
-              </div>
-            </div>
+            <ViewSession key={session.id} session={session} otherSide={session.coach} />
           ))}
         </div>
         <div className="w-1/2 flex flex-col m-auto my-4">

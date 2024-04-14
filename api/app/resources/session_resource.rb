@@ -22,6 +22,16 @@ class SessionResource < ApplicationResource
     end
   end
 
+  filter :historical_only, :boolean do
+    eq do |scope, value|
+      if value
+        scope.historical_only
+      else
+        scope
+      end
+    end
+  end
+
   def base_scope
     if current_user.nil?
       model.none
