@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fe4f4a6-63e1-4e5c-af1d-fd9080db732b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/app/controllers/reserve_session_forms_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/forms/reserve_session_form.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/app/resources/reserve_session_form_resource.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/student/AvailableTimeslot.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/pages/student/ReserveSlotForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/forms/ReserveSessionForm.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/models/coach_time_slot.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/models/coach_time_slot.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/models/session.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/models/session.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/models/time_slot.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/models/time_slot.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app/resources/coach_time_slot_resource.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/resources/coach_time_slot_resource.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db/migrate/20240414180627_create_coach_time_slots.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/db/migrate/20240414180627_create_coach_time_slots.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/db/seeds.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/spec/factories/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/api/spec/factories/users.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/student.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/student.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/coach.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/coach.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -603,7 +603,7 @@
       <workItem from="1713052673750" duration="611000" />
       <workItem from="1713053485338" duration="700000" />
       <workItem from="1713054535428" duration="651000" />
-      <workItem from="1713056752349" duration="13292000" />
+      <workItem from="1713056752349" duration="15367000" />
     </task>
     <servers />
   </component>

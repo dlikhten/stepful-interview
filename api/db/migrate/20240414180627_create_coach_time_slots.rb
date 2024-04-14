@@ -7,5 +7,7 @@ class CreateCoachTimeSlots < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :coach_time_slots, [:coach_id, :time_slot_id], unique: true
   end
 end

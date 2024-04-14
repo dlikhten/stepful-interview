@@ -34,7 +34,7 @@ cts2 = ts1.coach_time_slots.create(
   coach: User.find_by(user_type: :coach, email: 'coach2@example.com'),
 )
 cts3 = ts1.coach_time_slots.create(
-  coach: User.find_by(user_type: :coach, email: 'coach2@example.com'),
+  coach: User.find_by(user_type: :coach, email: 'coach3@example.com'),
 )
 cts2.create_session(
   start_time: ts1.start_time,

@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_180627) do
     t.bigint "session_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coach_id", "time_slot_id"], name: "index_coach_time_slots_on_coach_id_and_time_slot_id", unique: true
     t.index ["coach_id"], name: "index_coach_time_slots_on_coach_id"
     t.index ["session_id"], name: "index_coach_time_slots_on_session_id"
     t.index ["time_slot_id"], name: "index_coach_time_slots_on_time_slot_id"

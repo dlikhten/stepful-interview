@@ -7,6 +7,30 @@ class CoachTimeSlotResource < ApplicationResource
   belongs_to :coach, resource: UserResource
   belongs_to :session
 
+  filter :active_only, :boolean do
+    eq do |scope, value|
+      if value
+        scope.active_only
+      else
+        scope
+      end
+    end
+  end
+
+  filter :own_only, :boolean do
+    eq do |scope, value|
+      if value
+        scope.where(coach: current_user)
+      else
+        scope
+      end
+    end
+  end
+
+  sort :start_time, :string do |scope, dir|
+    scope.order_by_start_time(dir)
+  end
+
   def base_scope
     if current_user.nil?
       model.none
