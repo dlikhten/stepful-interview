@@ -83,15 +83,15 @@ of any API call.
 
 Data fetching APIs:
 
-GET    /api/time_slots
-GET    /api/coach_time_slots                                                                   
-GET    /api/sessions                                                                           
+- GET    /api/time_slots
+- GET    /api/coach_time_slots                                                                   
+- GET    /api/sessions                                                                           
 
 Form submissions:
 
-POST   /api/reserve_session_forms                                                              
-POST   /api/create_coach_time_slot_forms                                           
-POST   /api/post_session_notes_forms                                                           
+- POST   /api/reserve_session_forms                                                              
+- POST   /api/create_coach_time_slot_forms                                           
+- POST   /api/post_session_notes_forms                                                           
 
 ### Notes on decisions
 
