@@ -22,7 +22,7 @@ class CreateCoachTimeSlotForm < BaseForm
     # TODO: make this configurable
     # This is also why we didn't put this logic into the model. Maybe in the future this action allows for specifying
     # an end time, in which case the model doesn't actually care, it is correct whatever we choose as an end time
-    end_time = time_slot_start + 2.hours
+    end_time = time_slot_start + 2.hours - 1.second
 
     records_to_save = []
 
