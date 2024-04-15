@@ -63,14 +63,12 @@ CoachTimeSlot:
 Session:
 - A session between a coach and a student
 - Relates to a coach time slot
-- I consider a session as currently active if the current time is between start and end
+- I duplicated things like time in here, as once this record is created / session happens, it becomes a historical
+  record, so regardless of what we do to TimeSlots or any related model, all information about the session as it
+  happened will be here.
 
-The resources follow the model definitions.
-
-The form resources follow the actions that are available for the frontend to execute:
-- create a time slot for a coach
-- reserve a time slot by a student
-- update a session by setting the rating
+The resources follow the model definitions. You can see how they are defined in `app/resources`
+Form resources also exist in the resource path, but the form action objects can be found in `app/forms`
 
 ### Accessible pages
 
@@ -78,6 +76,22 @@ The form resources follow the actions that are available for the frontend to exe
 - `/student` -- the student view where they see their active/upcoming sessions and can reserve timeslots
 - `/coach` -- a coach's view of upcoming sessions and timeslots. Place where you can create more time slots
 - `/coach_history` -- a page for all historical sessions, including the currently active one. Can leave session notes.
+
+### API Endpoints
+Note, since this follows JSONAPI specifications, each model fetched can include its relationships and decendants as part
+of any API call.
+
+Data fetching APIs:
+
+GET    /api/time_slots
+GET    /api/coach_time_slots                                                                   
+GET    /api/sessions                                                                           
+
+Form submissions:
+
+POST   /api/reserve_session_forms                                                              
+POST   /api/create_coach_time_slot_forms                                           
+POST   /api/post_session_notes_forms                                                           
 
 ### Notes on decisions
 
@@ -110,6 +124,8 @@ The form resources follow the actions that are available for the frontend to exe
 - Didn't have time to write unit tests, but you should be able to see that the models are fairly simple and easy to test
   and actions are plain ol' ruby objects, so should be trivial to throw into a testing framework and get through all
   scenarios without having to go through testing the lifecycles of the API requests or any of the boilerplate there.
+- From a product standpoint, I have not handled repeating timeslots. I know usually these are desirable but due to time
+  constraints and because I didn't think to ask about it during the initial call, I have chosen not to include that work.
 
 ## Architectural notes
 
